@@ -31,21 +31,43 @@
         }
 
         .portfolio-container {
-            max-width: 1000px; /* Centered width optimized for large vertical cards */
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
+        /* NEW NAVBAR STYLES FOR MAPS PAGE */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-link {
             color: var(--text-muted);
             text-decoration: none;
+            padding: 10px 20px;
             font-weight: 500;
-            margin-bottom: 24px;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
-        .back-link:hover { color: var(--primary-accent); }
-        .back-link svg { margin-right: 6px; width: 16px; height: 16px; fill: currentColor; }
+
+        .nav-link.active {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: var(--primary-accent);
+            background-color: #f8fafc;
+        }
         
         .portfolio-header {
             margin-bottom: 50px;
@@ -88,7 +110,7 @@
         
         .embed-container { 
             position: relative; 
-            padding-bottom: 56.25%; /* Clean 16:9 aspect ratio on desktops */
+            padding-bottom: 56.25%; 
             height: 0; 
             overflow: hidden; 
             background: #f1f5f9;
@@ -147,14 +169,23 @@
             body {
                 padding: 20px 12px;
             }
+            .nav-bar {
+                flex-direction: column;
+                gap: 4px;
+                padding: 6px;
+                margin-bottom: 30px;
+            }
+            .nav-link {
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
             .portfolio-header h1 {
                 font-size: 2rem;
             }
-            /* Completely hides the map iframes on mobile devices */
             .embed-container { 
                 display: none; 
             }
-            /* Displays a professional context badge on mobile viewports */
             .mobile-tag {
                 font-size: 0.9rem;
                 font-weight: 500;
@@ -173,7 +204,7 @@
                 margin-bottom: 6px;
             }
             .action-button {
-                width: 100%; /* Expands buttons full-width for easy mobile interaction */
+                width: 100%; 
                 box-sizing: border-box;
             }
         }
@@ -183,10 +214,12 @@
 
     <div class="portfolio-container">
         
-        <a href="index.html" class="back-link">
-            <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
-            Back to Home
-        </a>
+        <!-- NEW UNIFORM HEADER NAVBAR: Added to top of maps page layout -->
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">Home / About</a>
+            <a href="experiencebuilder.html" class="nav-link active">Interactive Maps</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="nav-link">Resume Profile</a>
+        </nav>
 
         <div class="portfolio-header">
             <h1>Web Map Showcases</h1>
@@ -198,16 +231,15 @@
             <!-- COL 1: LOGAN CITY APP -->
             <div class="showcase-wrapper">
                 <div class="embed-container">
-                    <iframe src="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                    <iframe src="https://arcgis.com" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
-                    <span class="mobile-tag">🗺️ Web Page</span>
-                    <h3>Logan City Residential Occupancy</h3>
+                    <span class="mobile-tag">🗺️ Web Application</span>
+                    <h3>Flood Zone Lookup</h3>
                     <p>Pages built for Logan City to convey interactive map data to the general public!</p>
-                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
-                    <a class="action-button" href="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" target="_blank" rel="noopener noreferrer">
+                    <a class="action-button" href="hhttps://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
-                        Open Page in New Tab
+                        Open Application
                     </a>
                 </div>
             </div>
@@ -215,16 +247,15 @@
             <!-- COL 2: SECONDARY LOGAN APP -->
             <div class="showcase-wrapper">
                 <div class="embed-container">
-                    <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                    <iframe src="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
-                    <span class="mobile-tag">🗺️ Web Page</span>
-                    <h3>Logan City 2026 Chip/Seal Program</h3>
+                    <span class="mobile-tag">🗺️ Web Application</span>
+                    <h3>Logan City Residential Occupancy</h3>
                     <p>Secondary configuration application mapping key city boundaries, parcel vectors, and environmental service parameters.</p>
-                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
-                    <a class="action-button" href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
+                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
-                        Open Page in New Tab
+                        Open Application
                     </a>
                 </div>
             </div>
@@ -232,16 +263,14 @@
             <!-- COL 3: THIRD LOGAN APP -->
             <div class="showcase-wrapper">
                 <div class="embed-container">
-                    <iframe src="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                    <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
-                    <span class="mobile-tag">🗺️ Web Page</span>
-                    <h3>Logan City Flood Zone Lookup</h3>
+                    <span class="mobile-tag">🗺️ Web Application</span>
+                    <h3>Logan City 2026 Chip & Seal Program</h3>
                     <p>Analytical control panel hosting widgets designed to evaluate geographic metadata arrays across production databases.</p>
-                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
-                    <a class="action-button" href="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
-                        Open Page in New Tab
+                        Open Application
                     </a>
                 </div>
             </div>
