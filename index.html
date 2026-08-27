@@ -17,29 +17,14 @@
     <h1>My GIS Portfolio</h1>
     <p>Welcome! Below is an interactive map showcasing my spatial analysis projects.</p>
 
-    <!-- Map Container -->
-    <div id="map"></div>
-
-    <div class="project-card">
-        <h3>Project 1: Urban Canopy Analysis</h3>
-        <p>This project uses QGIS and remote sensing data to map urban heat islands.</p>
-    </div>
 
     <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com"></script>
-    <script>
-        // Initialize the map and set its view to your focus area
-        const map = L.map('map').setView([41.737, -111.834], 13); 
-
-        // Add an open-source basemap (OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Add a marker pointing to a project location
-        L.marker([41.737, -111.834]).addTo(map)
-            .bindPopup('<b>Logan, UT Project</b><br>Click to view analysis details.')
-            .openPopup();
+    <div class="embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border: 1px solid #ddd; border-radius: 8px;">
+        <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                allowfullscreen>
+        </iframe>
+    </div>
     </script>
 </body>
 </html>
