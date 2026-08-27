@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIS Portfolio</title>
-    <!-- REPAIRED GOOGLE FONTS LINK: Added fonts.googleapis.com back -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Modern Inter Font for sleek typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f8fafc;
@@ -31,12 +31,12 @@
         }
 
         .portfolio-container {
-            max-width: 1100px;
+            max-width: 1400px; /* Wider container to cleanly fit 3 elements side-by-side */
             margin: 0 auto;
         }
 
         .portfolio-header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: center;
         }
 
@@ -56,7 +56,7 @@
 
         .meta-info span {
             margin: 0 8px;
-            color: #cbd5e1; /* Subtle divider color */
+            color: #cbd5e1;
         }
 
         .meta-info a {
@@ -69,41 +69,109 @@
             color: var(--primary-accent);
         }
 
-        /* Clean wrapper layout for app and details card */
+        /* Responsive 3-Column Grid Layout */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr)); /* Exactly 3 columns on desktops */
+            gap: 30px; /* Space between each project box */
+        }
+
+        /* Changes layout to single-file stack on smaller tablet or phone viewports */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 640px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Clean wrapper layout for app boxes */
         .showcase-wrapper {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcase-wrapper:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
 
-        /* Sleek container to hold the Experience Builder App */
-        .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #f1f5f9; border-bottom: 1px solid var(--border-color); }
-        .embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        /* Container keeping frames at a clean landscape size within a smaller layout */
+        .embed-container { 
+            position: relative; 
+            padding-bottom: 65%; /* Tailored aspect ratio for 3-column rows */
+            height: 0; 
+            overflow: hidden; 
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-        /* Modern typography for project details card */
-        .project-card { padding: 32px; }
-        .project-card h3 { font-size: 1.5rem; font-weight: 600; margin-top: 0; margin-bottom: 12px; letter-spacing: -0.01em; }
-        .project-card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 24px; max-width: 800px; }
+        .embed-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
 
-        /* Styled Action Button instead of a basic link */
+        /* Modern typography for layout text blocks */
+        .project-card { 
+            padding: 24px; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pushes the button cleanly to the bottom edge */
+        }
+
+        /* Styled Action Buttons */
         .action-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             background-color: var(--primary-accent);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            box-shadow: var(--shadow-sm);
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
         }
-        .action-button:hover { background-color: var(--primary-hover); }
-        .action-button:active { transform: scale(0.98); }
-        .action-button svg { margin-right: 8px; width: 18px; height: 18px; fill: currentColor; }
+
+        .action-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .action-button svg {
+            margin-right: 6px;
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
     </style>
 </head>
 <body>
@@ -121,31 +189,69 @@
             </div>
         </div>
 
-        <div class="showcase-wrapper">
-            <!-- Live ArcGIS Experience Builder App Frame -->
-            <div class="embed-container">
-                <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
-                        allowfullscreen 
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
-                </iframe>
+        <!-- The 3-Column Display Grid Container -->
+        <div class="portfolio-grid">
+
+            <!-- PROJECT SLOT 1 -->
+            <div class="showcase-wrapper">
+                <div class="embed-container">
+                    <iframe src="https://arcgis.com" 
+                            allowfullscreen 
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+                    </iframe>
+                </div>
+                <div class="project-card">
+                    <h3>Logan City Map Interface</h3>
+                    <p>Pages built for Logan City to convey interactive map data to the general public!</p>
+                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+                        Open App
+                    </a>
+                </div>
             </div>
 
-            <!-- Project Context Information Card -->
-            <div class="project-card">
-                <h3>Featured Project: Interactive GIS Experience</h3>
-                <p>Pages built for Logan City to convey map data to the public!</p>
-                
-                <a class="action-button" href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
-                    <!-- REPAIRED SVG LINK: Fixed the path namespace format -->
-                    <svg viewBox="0 0 20 20" xmlns="http://w3.org">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                    </svg>
-                    Open Application in New Tab
-                </a>
+            <!-- PROJECT SLOT 2 -->
+            <div class="showcase-wrapper">
+                <div class="embed-container">
+                    <!-- PASTE YOUR SECOND EXPERIENCE BUILDER LINK BELOW -->
+                    <iframe src="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" 
+                            allowfullscreen 
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+                    </iframe>
+                </div>
+                <div class="project-card">
+                    <h3>Featured GIS Project 2</h3>
+                    <p>Brief description detailing your target audience, datasets analyzed, and primary analysis tools utilized here.</p>
+                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+                        Open App
+                    </a>
+                </div>
             </div>
-        </div>
 
+            <!-- PROJECT SLOT 3 -->
+            <div class="showcase-wrapper">
+                <div class="embed-container">
+                    <!-- PASTE YOUR THIRD EXPERIENCE BUILDER LINK BELOW -->
+                    <iframe src="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" 
+                            allowfullscreen 
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+                    </iframe>
+                </div>
+                <div class="project-card">
+                    <h3>Featured GIS Project 3</h3>
+                    <p>Brief description detailing your target audience, datasets analyzed, and primary analysis tools utilized here.</p>
+                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+                        Open App
+                    </a>
+                </div>
+            </div>
+
+        </div> <!-- End Grid Container -->
     </div>
 
 </body>
