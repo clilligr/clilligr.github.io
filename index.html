@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christina Lilligren | GIS Professional</title>
+    <!-- Modern Inter Font for sleek typography -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,102 +14,219 @@
             --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #475569;
-            --primary-accent: #0284c7;
+            --primary-accent: #0284c7; /* Professional Slate Blue */
             --primary-hover: #0369a1;
             --border-color: #e2e8f0;
-            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.05);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
         }
+
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
-            padding: 0;
+            padding: 40px 20px;
             background-color: var(--bg-color);
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            line-height: 1.6;
         }
-        .profile-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 48px;
+
+        .portfolio-container {
+            max-width: 900px; /* Clean, centered layout size for a resume/about page */
+            margin: 0 auto;
+        }
+
+        .portfolio-header {
+            margin-bottom: 24px;
             text-align: center;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: var(--shadow-lg);
-            margin: 20px;
         }
-        h1 {
+
+        .portfolio-header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.025em;
             margin-bottom: 8px;
+            color: var(--text-main);
         }
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--primary-accent);
-            font-weight: 500;
+
+        .meta-info {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
             margin-bottom: 24px;
         }
-        p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 32px;
+
+        .meta-info span {
+            margin: 0 8px;
+            color: #cbd5e1;
         }
-        .meta-info {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 32px;
-            font-size: 0.95rem;
-        }
+
         .meta-info a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
-        .meta-info a:hover { color: var(--primary-accent); }
-        .meta-info span { color: #cbd5e1; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary-accent);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px 28px;
+
+        .meta-info a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Sleek Link Navigation Bar Layout */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            padding: 8px;
             border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background-color 0.2s;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
-        .btn:hover { background-color: var(--primary-hover); }
-        .btn svg { margin-left: 8px; width: 18px; height: 18px; fill: currentColor; }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        /* Highlights the current active homepage */
+        .nav-link.active {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: var(--primary-accent);
+            background-color: #f8fafc;
+        }
+
+        /* Structured Layout Cards */
+        .about-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 12px;
+        }
+
+        .about-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-category {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h4 {
+            margin: 0 0 8px 0;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <h1>Christina Lilligren</h1>
-        <div class="subtitle">GIS Analyst & Developer</div>
+    <div class="portfolio-container">
         
-        <p>Welcome to my geospatial portfolio. I specialize in design workflows, spatial analysis pipelines, and translating complex map metadata into interactive browser environments for public and private stakeholders.</p>
-        
-        <div class="meta-info">
-            <a href="mailto:christinalilligren@gmail.com">Email</a>
-            <span>•</span>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <!-- Header Info Block -->
+        <div class="portfolio-header">
+            <h1>GIS Portfolio</h1>
+            <div class="meta-info">
+                <strong>Christina Lilligren</strong>
+                <span>•</span>
+                <a href="mailto:christinalilligren@gmail.com">christinalilligren@gmail.com</a>
+                <span>•</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
         </div>
 
-        <!-- Links directly to your maps page -->
-        <a href="portfolio.html" class="btn">
-            View Interactive Maps
-            <svg viewBox="0 0 20 20" xmlns="http://w3.org">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-            </svg>
-        </a>
+        <!-- NEW: Navigation Bar linking your pages -->
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link active">Home / About</a>
+            <a href="portfolio.html" class="nav-link">Interactive Maps</a>
+            <!-- You can link a downloadable resume PDF or add more links here -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="nav-link">Resume Profile</a>
+        </nav>
+
+        <!-- NEW: About Me Text & Core Focus Card -->
+        <main class="about-section">
+            <h2>About Me</h2>
+            <p>Welcome! I am a Geographic Information Systems (GIS) Professional passionate about transforming complex geospatial frameworks, remote sensing models, and asset databases into dynamic applications.</p>
+            <p>My work bridges raw spatial computation with frontend layouts, specifically leveraging platforms like ArcGIS Experience Builder to convey structural map layers to public administrators and community stakeholders. I specialize in spatial data architectures, geographic modeling, and design workflows.</p>
+            
+            <h3>Technical Core Competencies</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Software & Platforms</h4>
+                    <ul>
+                        <li>ArcGIS Pro</li>
+                        <li>ArcGIS Online</li>
+                        <li>Experience Builder</li>
+                        <li>QGIS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Spatial Analytics</h4>
+                    <ul>
+                        <li>Vector/Raster Analysis</li>
+                        <li>Cartographic Design</li>
+                        <li>Data Normalization</li>
+                        <li>Asset Tracking</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Web Systems</h4>
+                    <ul>
+                        <li>HTML5 / CSS3</li>
+                        <li>Responsive Grid Design</li>
+                        <li>Interactive Iframes</li>
+                        <li>Static Deployments</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
     </div>
 
 </body>
