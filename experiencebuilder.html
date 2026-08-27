@@ -120,6 +120,10 @@
             font-size: 1rem; 
             margin-bottom: 24px; 
         }
+
+        .mobile-tag {
+            display: none;
+        }
         
         .action-button {
             display: inline-flex;
@@ -138,7 +142,7 @@
         .action-button:hover { background-color: var(--primary-hover); }
         .action-button svg { margin-right: 8px; width: 18px; height: 18px; fill: currentColor; }
 
-        /* MOBILE ADJUSTMENTS FOR EXPERIENCEBUILDER.HTML */
+        /* THE MOBILE SWITCH: Triggered on screens 768px or smaller */
         @media (max-width: 768px) {
             body {
                 padding: 20px 12px;
@@ -146,18 +150,30 @@
             .portfolio-header h1 {
                 font-size: 2rem;
             }
-            /* OPTION A: Forced map windows to become boxier and taller on phones */
+            /* Completely hides the map iframes on mobile devices */
             .embed-container { 
-                padding-bottom: 85%; 
+                display: none; 
+            }
+            /* Displays a professional context badge on mobile viewports */
+            .mobile-tag {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: var(--primary-accent);
+                background: #f0f9ff;
+                padding: 6px 12px;
+                border-radius: 6px;
+                display: inline-block;
+                margin-bottom: 12px;
             }
             .project-card { 
-                padding: 20px; 
+                padding: 24px; 
             }
             .project-card h3 {
                 font-size: 1.3rem;
+                margin-bottom: 6px;
             }
             .action-button {
-                width: 100%; /* Spans full width of card for easier thumb clicking */
+                width: 100%; /* Expands buttons full-width for easy mobile interaction */
                 box-sizing: border-box;
             }
         }
@@ -185,9 +201,11 @@
                     <iframe src="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
+                    <span class="mobile-tag">🗺️ Web Application</span>
                     <h3>Logan City Map Interface</h3>
                     <p>Pages built for Logan City to convey interactive map data to the general public!</p>
-                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
+                    <a class="action-button" href="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
                         Open Application in New Tab
                     </a>
@@ -200,9 +218,11 @@
                     <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
+                    <span class="mobile-tag">🗺️ Web Application</span>
                     <h3>Logan Public Assets View</h3>
                     <p>Secondary configuration application mapping key city boundaries, parcel vectors, and environmental service parameters.</p>
-                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
+                    <a class="action-button" href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
                         Open Application in New Tab
                     </a>
@@ -215,17 +235,8 @@
                     <iframe src="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                 </div>
                 <div class="project-card">
+                    <span class="mobile-tag">🗺️ Web Application</span>
                     <h3>Spatial Infrastructure Dashboard</h3>
                     <p>Analytical control panel hosting widgets designed to evaluate geographic metadata arrays across production databases.</p>
-                    <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 20 20" xmlns="http://w3.org"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
-                        Open Application in New Tab
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</body>
-</html>
+                    <!-- FIXED BUTTON TARGET & REPAIRED SVG NAMESPACE URL -->
+                    <a class="action-button" href="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" target="_blank" rel="noopener noreferrer">
