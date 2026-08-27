@@ -4,28 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GIS Portfolio</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com" />
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        #map { height: 400px; width: 100%; border-radius: 8px; margin-bottom: 20px; }
-        .project-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .portfolio-header {
+            margin-bottom: 30px;
+        }
+        /* Responsive container to hold the Experience Builder App */
+        .embed-container { 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0; 
+            overflow: hidden; 
+            max-width: 100%; 
+            background: #fff;
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .embed-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
+        .project-card { 
+            background: #fff;
+            border: 1px solid #ddd; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .fallback-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0079c1; /* ArcGIS Blue */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .fallback-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <h1>My GIS Portfolio</h1>
-    <p>Welcome! Below is an interactive map showcasing my spatial analysis projects.</p>
+    <div class="portfolio-header">
+        <h1>My GIS Portfolio</h1>
+        <p>Welcome! Below is an interactive web application showcasing my spatial data infrastructure and analytics work.</p>
+    </div>
 
-
-    <!-- Leaflet JavaScript -->
-    <div class="embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border: 1px solid #ddd; border-radius: 8px;">
-        <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                allowfullscreen>
+    <!-- Live ArcGIS Experience Builder App Frame -->
+    <div class="embed-container">
+        <iframe src="https://arcgis.com" 
+                allowfullscreen 
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
         </iframe>
     </div>
-    </script>
+
+    <!-- Project Context Information Card -->
+    <div class="project-card">
+        <h3>Featured Project: Interactive GIS Experience</h3>
+        <p>This dynamic application leverages ArcGIS Experience Builder to synthesize complex spatial datasets, web maps, and widget tools into a cohesive browser environment.</p>
+        <a class="fallback-link" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
+            🔗 Open Application in New Tab
+        </a>
+    </div>
+
 </body>
 </html>
-
