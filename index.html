@@ -1,1 +1,46 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GIS Portfolio</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #map { height: 400px; width: 100%; border-radius: 8px; margin-bottom: 20px; }
+        .project-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>My GIS Portfolio</h1>
+    <p>Welcome! Below is an interactive map showcasing my spatial analysis projects.</p>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <div class="project-card">
+        <h3>Project 1: Urban Canopy Analysis</h3>
+        <p>This project uses QGIS and remote sensing data to map urban heat islands.</p>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com"></script>
+    <script>
+        // Initialize the map and set its view to your focus area
+        const map = L.map('map').setView([41.737, -111.834], 13); 
+
+        // Add an open-source basemap (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker pointing to a project location
+        L.marker([41.737, -111.834]).addTo(map)
+            .bindPopup('<b>Logan, UT Project</b><br>Click to view analysis details.')
+            .openPopup();
+    </script>
+</body>
+</html>
+
