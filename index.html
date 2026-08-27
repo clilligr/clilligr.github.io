@@ -3,80 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GIS Portfolio</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .portfolio-header {
-            margin-bottom: 30px;
-        }
-        /* Responsive container to hold the Experience Builder App */
-        .embed-container { 
-            position: relative; 
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0; 
-            overflow: hidden; 
-            max-width: 100%; 
-            background: #fff;
-            border: 1px solid #ddd; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        .embed-container iframe { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            border: 0; 
-        }
-        .project-card { 
-            background: #fff;
-            border: 1px solid #ddd; 
-            padding: 20px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .fallback-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #0079c1; /* ArcGIS Blue */
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .fallback-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced Portfolio | Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="portfolio-header">
-        <h1>My GIS Portfolio</h1>
-        <p>Welcome! Below is an interactive web application showcasing my spatial data infrastructure and analytics work.</p>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Ishika Maurya</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <!-- Live ArcGIS Experience Builder App Frame -->
-    <div class="embed-container">
-        <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
-                allowfullscreen 
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
-        </iframe>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Hello, I'm <span class="highlight">Ishika Maurya</span></h1>
+            <p>Web Developer | UI/UX Enthusiast | Problem Solver</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
 
-    <!-- Project Context Information Card -->
-    <div class="project-card">
-        <h3>Featured Project: Interactive GIS Experience</h3>
-        <p>This dynamic application leverages ArcGIS Experience Builder to synthesize complex spatial datasets, web maps, and widget tools into a cohesive browser environment.</p>
-        <a class="fallback-link" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
-            🔗 Open Application in New Tab
-        </a>
-    </div>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <p>I’m a passionate web developer with a love for creating beautiful, functional websites that provide excellent user experiences. My focus is on building responsive and accessible designs.</p>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2>Projects</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 205950.png" alt="Project 1">
+                <h3>Project One</h3>
+                <p>A responsive Cryptocurrency Dashboard with advanced UI/UX features. Built using React and CSS animations.</p>
+            </div>
+            <div class="project-card">
+                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 210646.png" alt="Project 2">
+                <h3>Project Two</h3>
+                <p>An interactive Quiz app with drag-and-drop functionality and advanced filtering.</p>
+            </div>
+            <div class="project-card">
+                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 211004.png" alt="Project 3">
+                <h3>Project Three</h3>
+                <p>A personal finance tracker with real-time data visualization using Chart.js and local storage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <p>I'm always open to new opportunities and collaborations. Get in touch with me using the form below or connect with me on social media.</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ishika Maurya | All Rights Reserved</p>
+    </footer>
+
+    <script src="scrips.js"></script>
 </body>
 </html>
