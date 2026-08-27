@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GIS Portfolio</title>
+    <title>GIS Portfolio</title>
     <!-- Modern Inter Font for sleek typography -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
@@ -44,15 +44,29 @@
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.025em;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: var(--text-main);
         }
 
-        .portfolio-header p {
-            font-size: 1.1rem;
+        .meta-info {
+            font-size: 1rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .meta-info span {
+            margin: 0 8px;
+            color: #cbd5e1; /* Subtle divider color */
+        }
+
+        .meta-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .meta-info a:hover {
+            color: var(--primary-accent);
         }
 
         /* Clean wrapper layout for app and details card */
@@ -139,14 +153,20 @@
     <div class="portfolio-container">
         
         <div class="portfolio-header">
-            <h1>My GIS Portfolio</h1>
-            <p>An interactive spatial data application synthesizing advanced geospatial analysis and web infrastructure designs.</p>
+            <h1>GIS Portfolio</h1>
+            <div class="meta-info">
+                <strong>Your Name Here</strong>
+                <span>•</span>
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                <span>•</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
         </div>
 
         <div class="showcase-wrapper">
             <!-- Live ArcGIS Experience Builder App Frame -->
             <div class="embed-container">
-                <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
+                <iframe src="https://arcgis.com" 
                         allowfullscreen 
                         sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
                 </iframe>
@@ -157,7 +177,7 @@
                 <h3>Featured Project: Interactive GIS Experience</h3>
                 <p>This dynamic platform leverages ArcGIS Experience Builder to host responsive data pipelines, web maps, and widget toolsets in a uniform production layout.</p>
                 
-                <a class="action-button" href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
+                <a class="action-button" href="https://arcgis.com" target="_blank" rel="noopener noreferrer">
                     <!-- Inline External Link Icon -->
                     <svg viewBox="0 0 20 20" xmlns="http://w3.org">
                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
