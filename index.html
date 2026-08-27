@@ -135,7 +135,43 @@
             margin-top: 24px;
         }
 
+        /* Mobile Layout Optimizations */
         @media (max-width: 640px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .portfolio-header h1 {
+                font-size: 2rem;
+            }
+
+            .meta-info {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .meta-info span {
+                display: none; /* Hide bullets on mobile vertical layout */
+            }
+
+            .nav-bar {
+                flex-wrap: wrap; /* Allows buttons to drop to a new line cleanly */
+                padding: 4px;
+                gap: 4px;
+            }
+
+            .nav-link {
+                flex: 1 1 calc(50% - 4px); /* Forces items into a clean 2x2 grid */
+                text-align: center;
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+
+            .about-section {
+                padding: 24px 16px;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -177,22 +213,22 @@
             </div>
         </div>
 
-             <!-- NEW UNIFORM HEADER NAVBAR: Added to top of maps page layout -->
+        <!-- NEW UNIFORM HEADER NAVBAR -->
         <nav class="nav-bar">
             <a href="index.html" class="nav-link">About</a>
             <a href="experiencebuilder.html" class="nav-link active">Web Applications</a>
             <a href="maps.html" class="nav-link active">Maps</a>
             <a href="thesis.html" class="nav-link active">Thesis</a>
-            </nav>
+        </nav>
 
         <main class="about-section">
             <h2>About Me</h2>
             <p>Welcome! I am a Geographic Information Systems (GIS) Professional passionate about transforming complex geospatial frameworks, remote sensing models, and asset databases into dynamic applications.</p>
             <p>My work bridges raw spatial computation with frontend layouts, specifically leveraging platforms like ArcGIS Experience Builder to convey structural map layers to public administrators and community stakeholders. I specialize in spatial data architectures, geographic modeling, and design workflows.</p>
-            
         </main>
 
     </div>
 
 </body>
 </html>
+
