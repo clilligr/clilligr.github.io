@@ -3,77 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Advanced Portfolio | Your Name</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>My GIS Portfolio</title>
+    <!-- Modern Inter Font for sleek typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary-accent: #0284c7; /* Professional Slate Blue */
+            --primary-hover: #0369a1;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .portfolio-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .portfolio-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .portfolio-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .portfolio-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Clean wrapper layout for app and details card */
+        .showcase-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Sleek container to hold the Experience Builder App */
+        .embed-container { 
+            position: relative; 
+            padding-bottom: 56.25%; /* Clean 16:9 Aspect Ratio */
+            height: 0; 
+            overflow: hidden; 
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .embed-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
+
+        /* Modern typography for project details card */
+        .project-card { 
+            padding: 32px; 
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        /* Styled Action Button instead of a basic link */
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-accent);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .action-button:active {
+            transform: scale(0.98);
+        }
+
+        .action-button svg {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">Ishika Maurya</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Hello, I'm <span class="highlight">Ishika Maurya</span></h1>
-            <p>Web Developer | UI/UX Enthusiast | Problem Solver</p>
-            <a href="#projects" class="btn">View My Work</a>
+    <div class="portfolio-container">
+        
+        <div class="portfolio-header">
+            <h1>My GIS Portfolio</h1>
+            <p>An interactive spatial data application synthesizing advanced geospatial analysis and web infrastructure designs.</p>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <h2>About Me</h2>
-        <p>I’m a passionate web developer with a love for creating beautiful, functional websites that provide excellent user experiences. My focus is on building responsive and accessible designs.</p>
-    </section>
+        <div class="showcase-wrapper">
+            <!-- Live ArcGIS Experience Builder App Frame -->
+            <div class="embed-container">
+                <iframe src="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" 
+                        allowfullscreen 
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+                </iframe>
+            </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <h2>Projects</h2>
-        <div class="project-cards">
+            <!-- Project Context Information Card -->
             <div class="project-card">
-                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 205950.png" alt="Project 1">
-                <h3>Project One</h3>
-                <p>A responsive Cryptocurrency Dashboard with advanced UI/UX features. Built using React and CSS animations.</p>
-            </div>
-            <div class="project-card">
-                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 210646.png" alt="Project 2">
-                <h3>Project Two</h3>
-                <p>An interactive Quiz app with drag-and-drop functionality and advanced filtering.</p>
-            </div>
-            <div class="project-card">
-                <img src="C:\Users\maury\OneDrive\Desktop\coding\html\Screenshot 2024-10-05 211004.png" alt="Project 3">
-                <h3>Project Three</h3>
-                <p>A personal finance tracker with real-time data visualization using Chart.js and local storage.</p>
+                <h3>Featured Project: Interactive GIS Experience</h3>
+                <p>This dynamic platform leverages ArcGIS Experience Builder to host responsive data pipelines, web maps, and widget toolsets in a uniform production layout.</p>
+                
+                <a class="action-button" href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
+                    <!-- Inline External Link Icon -->
+                    <svg viewBox="0 0 20 20" xmlns="http://w3.org">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                    </svg>
+                    Open Application in New Tab
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <h2>Contact Me</h2>
-        <p>I'm always open to new opportunities and collaborations. Get in touch with me using the form below or connect with me on social media.</p>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Ishika Maurya | All Rights Reserved</p>
-    </footer>
-
-    <script src="scrips.js"></script>
 </body>
 </html>
