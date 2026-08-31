@@ -34,6 +34,7 @@
       padding: 20px 40px;
       background-color: #2c3e50;      /* Dark sleek background color */
       color: white;
+      position: relative;             /* Anchor position context for mobile menu */
     }
 
     /* Left Side Title Style */
@@ -42,7 +43,7 @@
       font-weight: bold;
     }
 
-    /* Right Side Links Style */
+    /* Right Side Links Style (Desktop view default) */
     .nav-links {
       display: flex;
       list-style: none;               /* Removes standard bullet points */
@@ -59,6 +60,28 @@
     /* Hover effect for the header links */
     .nav-links a:hover {
       color: #3498db;
+    }
+
+    /* MOBILE NAVIGATION SYSTEM CONTROLS (Hidden on Desktop by default) */
+    .menu-toggle {
+      display: none;                  /* Hides the structural layout checkbox trigger toggle */
+    }
+
+    .hamburger-label {
+      display: none;                  /* Hides the visual graphic lines on desktop monitors */
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    /* Draws the three horizontal lines for the hamburger button icon */
+    .hamburger-label span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
     }
 
     /* Main Content Area Container */
@@ -124,6 +147,50 @@
       color: #3498db;
       transform: scale(1.1);          /* Slightly enlarges icon on hover */
     }
+
+    /* RESPONSIVE DESIGN - TRIGGER MOBILE DROPDOWN LINKS PANEL */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;           /* Snugs the navbar slightly closer to screen edges */
+      }
+
+      /* Displays the hamburger vector lines */
+      .hamburger-label {
+        display: flex;
+      }
+
+      /* Re-formats the navbar list links box array into a stacked drop-down tray */
+      .nav-links {
+        display: none;                /* HIDDEN BY DEFAULT on mobile view screens */
+        flex-direction: column;
+        width: 100%;
+        background-color: #2c3e50;
+        position: absolute;
+        top: 100%;                    /* Drops the drawer right below the header line wall */
+        left: 0;
+        padding: 20px;
+        gap: 15px;
+        border-top: 1px solid #34495e;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        z-index: 1001;
+      }
+
+      /* THE CSS DROPDOWN MAGIC: If the toggle box is checked, target nav-links and display them */
+      .menu-toggle:checked ~ nav .nav-links {
+        display: flex;
+      }
+
+      /* Optional Polish: Animate hamburger icon into an 'X' when menu dropdown drawer opens */
+      .menu-toggle:checked + .hamburger-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      .menu-toggle:checked + .hamburger-label span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle:checked + .hamburger-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -132,7 +199,17 @@
     <!-- Left Hand Side Title -->
     <div class="logo">Christina Lilligren</div>
     
-    <!-- Right Hand Side Navigation Bar -->
+    <!-- Pure CSS Toggle Checkbox (Kept invisible to layout engines) -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    
+    <!-- Three line hamburger button icon graphic -->
+    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- Right Hand Side Navigation Bar links container -->
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">About Me</a></li>
@@ -157,20 +234,19 @@
     </div>
     <div class="footer-socials">
       <!-- Built-in Email SVG Icon Link -->
-      <a href="christinalilligren@gmail.com" title="Email Me">
+      <a href="mailto:christinalilligren@gmail.com" title="Email Me">
         <svg viewBox="0 0 24 24">
           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
         </svg>
       </a>
-
       <!-- Built-in LinkedIn SVG Icon Link -->
       <a href="https://linkedin.com/in/christinalilligren" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
         <svg viewBox="0 0 24 24">
           <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
         </svg>
       </a>
-
-    <a href="https://github.com/clilligr" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" title="GitHub Profile">
+      <!-- Built-in GitHub SVG Icon Link -->
+      <a href="https://github.com/clilligr" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" title="GitHub Profile">
         <svg viewBox="0 0 24 24">
           <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
         </svg>
