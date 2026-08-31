@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GIS Portfolio</title>
   <style>
-    /* CSS Variables definitions used by the embed styles */
+    /* CSS Variables definitions used by the page styles */
     :root {
       --card-bg: #ffffff;
       --border-color: #e2e8f0;
@@ -23,7 +23,7 @@
       box-sizing: border-box;
     }
 
-    /* Force the page wrapper to fill the screen height */
+    /* Force the page wrapper to fill the screen height precisely */
     html, body {
       height: 100%;
     }
@@ -34,10 +34,10 @@
       color: #333333;            /* Dark gray text for good readability */
       line-height: 1.6;          /* Adds breathing room between lines of text */
       display: flex;
-      flex-direction: column;    /* Allows the footer to stick to the bottom */
+      flex-direction: column;    /* Structural arrangement for sticky bars */
     }
 
-    /* The Navigation Header Container - FROZEN TO TOP */
+    /* The Navigation Header Container - LOCKED TO TOP */
     .navbar {
       display: flex;
       justify-content: space-between; /* Pushes left and right sides apart */
@@ -46,10 +46,10 @@
       background-color: #2c3e50;      /* Dark sleek background color */
       color: white;
       
-      /* Fixed Position controls */
+      /* Sticky Fixed Layout controls */
       position: sticky;
       top: 0;
-      z-index: 1000;                  /* Ensures content scrolls underneath header */
+      z-index: 1000;                  /* Guarantees main content scrolls underneath header */
     }
 
     /* Left Side Title Style */
@@ -77,196 +77,275 @@
       color: #3498db;
     }
 
-    /* Main Content Area Container */
+    /* Main Area Container expands 100% full-bleed edge-to-edge */
     .main-content {
-      width: 100%;
-      margin: 30px 0; 
-      flex: 1;                        /* Fills remaining screen height space */
-      overflow-x: hidden;
+      width: 100%;                  
+      margin: 30px 0;                 /* Spacing above and below the main section */
+      flex: 1;                        /* Fills all remaining layout screen space dynamically */
+      overflow-x: hidden;             /* Safety lock against sideways scrollbars */
     }
 
-    /* Main Page Title */
+    /* Main Page Title WITH edge-to-edge white background bar */
     .main-content h1 {
       font-size: 2.3rem;
       color: #2c3e50;                 /* Matches the navbar color for a cohesive look */
-      background-color: #ffffff;
+      background-color: #ffffff;      /* White background bar stretches 100% of the screen */
       text-align: center;
-      width: 100%;                   /* Forces width to match 100% of the screen viewport width */
+      width: 100%;                   
       
-      /* Framing Borders across the entire screen width */
-      border-top: 1px solid #e2e8f0;   /* Thin frame line across top edge */
-      border-bottom: 1px solid #e2e8f0;/* Thin frame line across bottom edge */
-      margin-bottom: 30px;            /* Creates space below the background strip */
-      
-      /* Inner Padding Adjustment */
-      padding: 15px 20px;             /* Pads top/bottom, sets text 40px away from the screen edge */
-      box-sizing: border-box;         /* Prevents horizontal screen scrollbars */
-    }
-
-    /* Main Page Text */
-    .main-content p {
-      max-width: 800px;
-      margin: 0 auto 15px auto;       /* Centers paragraphs and adds bottom spacing */
-      font-size: 1.1rem;
-      padding: 0 20px;                /* Adds spacing buffer on screen edges */
+      /* Horizontal border lines spanning the full window width */
+      border-top: 1px solid #e2e8f0;   
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 30px;            /* Creates space below the bar before text blocks start */
+      padding: 15px 20px;             
       box-sizing: border-box;
     }
 
-/* Footer Container Styling - FROZEN TO BOTTOM */ 
-.footer { 
-  background-color: #2c3e50;      /* Matches navbar background color */ 
-  color: white; 
-  padding: 20px 40px; 
-  display: flex; 
-  justify-content: space-between; /* Copyright on left, icons on right */ 
-  align-items: center;            /* Centers contents vertically */ 
-  
-  /* Fixed Position controls */ 
-  position: sticky; 
-  bottom: 0; 
-  z-index: 1000;                  /* Keeps footer rendering over scrolling items */ 
-  width: 100%;                    /* Ensures full layout stretch */
-} 
+    /* Constrains the introductory biography text */
+    .main-content p.intro-text {
+      max-width: 1100px;               
+      margin: 0 auto 30px auto;       
+      font-size: 1.1rem;
+      padding: 0 40px;                
+      box-sizing: border-box;
+    }
 
-.footer-text { 
-  font-size: 0.9rem; 
-  color: #bdc3c7;                 /* Soft muted gray text */ 
-} 
+    /* MASTER CONTAINER FOR THE ALTERNATING ROWS */
+    .alternating-container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;                      /* Creates a generous visual break between project rows */
+      box-sizing: border-box;
+    }
 
-.footer-socials { 
-  display: flex;                  /* Forces side-by-side icon alignment */
-  align-items: center;            /* Centers icons vertically */
-  gap: 20px;                      /* Controls exact horizontal space between icons */
-} 
+    /* INDIVIDUAL PROJECT ROW CONTAINER */
+    .project-row {
+      display: flex;
+      align-items: center;            /* Centers text content vertically next to the image */
+      gap: 40px;                      /* Horizontal space between image and text columns */
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.footer-socials a { 
-  color: white; 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  width: 24px;                    /* Sets crisp bounding box width */
-  height: 24px;                   /* Sets crisp bounding box height */
-  transition: transform 0.2s ease, color 0.2s ease; 
-} 
+    .project-row:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
 
-/* Configures the size of the inline SVG vectors */ 
-.footer-socials svg { 
-  width: 100%;                    /* Fills the anchor tag boundary cleanly */
-  height: 100%; 
-  fill: currentColor;             /* Keeps icons matching the text link colors */ 
-} 
+    /* AUTOMATIC FLIP RULE: Reverses row orientation for every second project row */
+    .project-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
 
-/* Hover effects for footer icons */ 
-.footer-socials a:hover { 
-  color: #3498db; 
-  transform: scale(1.1);          /* Slightly enlarges icon on hover */ 
-}
+    /* Image / Iframe Column (Set to take up 50% of the row space) */
+  .row-image-container {
+    flex: 3;                    /* Grants a larger growth priority math share */
+    position: relative;
+    padding-bottom: 42%;        /* Aspect ratio height adjusted for the wider horizontal span */
+    height: 0;
+    overflow: hidden;
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+   }
 
-/* EMBED SHOWCASE WRAPPER CONTAINER */ 
-.showcase-wrapper { 
-  background: var(--card-bg); 
-  border: 1px solid var(--border-color); 
-  border-radius: 16px; 
-  overflow: hidden; 
-  box-shadow: var(--shadow-sm); 
-  transition: transform 0.2s ease, box-shadow 0.2s ease; 
-  
-  /* FIXED: Expanded to 1400px to allow 4 columns to sit comfortably without crowding */ 
-  max-width: 1400px;          
-  margin: 40px auto;          /* Centers the block element and adds space top/bottom */ 
-  width: calc(100% - 40px);   /* Maximizes screen usage by reducing side gutters slightly */ 
-  padding: 24px;              /* Internal breathing room around your row grid system */
+
+    /* Text Column Wrapper (Set to take up 50% of the row space) */
+  /* Text Column (Takes up roughly 1/3 of the row space, auto-adjusts layout constraints) */
+  .row-text-container {
+    flex: 1;                    /* Fills the exact remainder space dynamically */
+    min-width: 280px;           /* Safety lock: stops column from crushing too narrow */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    /* Keeps text elements aligned left */
+    word-wrap: break-word;      /* Forces long text strings to wrap cleanly */
+    overflow: hidden;           /* Traps layout elements inside the border footprint */
+  }
+
+    .row-text-container h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .row-text-container p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    /* BULLETPROOF INTERACTIVE PILL BUTTONS */
+    .alternating-container .action-button {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-color: #3498db !important;   /* Vibrant blue pill background color */
+      color: #ffffff !important;               /* Forces link text to be crisp white */
+      text-decoration: none !important;        /* Strips default browser underlines */
+      padding: 12px 24px !important;           /* Clear click area space */
+      border-radius: 8px !important;           /* Smoothly rounded button corners */
+      font-weight: 500 !important;
+      font-size: 0.95rem !important;
+      transition: background-color 0.2s ease, transform 0.1s ease !important;
+    }
+
+    .alternating-container .action-button:hover {
+      background-color: #2980b9 !important;   /* Slightly deeper blue on mouse hover */
+    }
+
+    .alternating-container .action-button svg {
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px !important;
+      margin-right: 8px !important;
+      fill: #ffffff !important;                /* Forces arrow graphic to paint solid white */
+      display: inline-block !important;
+    }
+
+/* OTHER MAPS LIST SECTION */
+.other-maps-section {
+  max-width: 1100px;
+  margin: 50px auto 20px auto; /* Injects generous separation space below your alternating cards */
+  padding: 0 40px;
   box-sizing: border-box;
-} 
-
-/* FIXED: SWITCHED TO A 4-COLUMN SYSTEM WITH CRISP ELEMENT ALIGNMENT */
-.projects-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Dictates exactly 4 columns per row */
-  gap: 20px;                  /* Streamlined gap padding to prevent layout blowouts */
 }
 
-/* Structural item module holding individual pictures and buttons */
-.project-item {
-  display: flex;
-  flex-direction: column;     /* Stacks Content vertical layout: Image -> Title -> Button */
-  height: 100%;               /* Uniform row balancing */
-}
-
-/* Image frame element */
-.image-container { 
-  position: relative; 
-  padding-bottom: 56.25%;     /* Locks picture ratios to widescreen 16:9 cinematic aspect box */ 
-  height: 0; 
-  overflow: hidden; 
-  background: #f1f5f9; 
-  border: 1px solid var(--border-color); 
-  border-radius: 8px;         /* Smooth rounded layout corners for your screenshots */
-  margin-bottom: 12px;        /* Spacing below picture frame box */
-} 
-
-.image-container img { 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover;          /* Prevents map snapshots from warping out of distortion scale bounds */
-} 
-
-.project-item h3 { 
-  font-size: 1.1rem;          /* Sized specifically for 4-across rows */ 
-  font-weight: 600; 
-  margin-top: 0; 
-  margin-bottom: 16px; 
+.other-maps-section h2 {
+  font-size: 1.8rem;
   color: #2c3e50;
-  text-align: left;
-  flex-grow: 1;               /* Dynamically pads different titles lengths */
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0; /* Underline divider matching your project styles */
 }
 
-/* ACTION BUTTONS DESIGN */
-/* ACTION BUTTONS FIX */
-.projects-row .action-button {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background-color: #3498db !important;   /* Vibrant blue pill background color */
-  color: #ffffff !important;               /* Forces link text to be crisp white */
-  text-decoration: none !important;        /* Strips default browser underlines */
-  padding: 10px 16px !important;           /* Inner padding pill shape spacing */
-  border-radius: 8px !important;           /* Smoothly rounded button corners */
-  font-weight: 500 !important;
-  font-size: 0.9rem !important;
-  transition: background-color 0.2s ease, transform 0.1s ease !important;
-  width: 100% !important;                  /* Expands button to fill column evenly */
-  margin-top: auto !important;             /* Levels the buttons across different titles */
-  box-sizing: border-box !important;
+.maps-list {
+  list-style: none; /* Strips plain default bullet points */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Uniform vertical spacing between list items */
 }
 
-/* Button Hover Dynamic Style */
-.projects-row .action-button:hover {
-  background-color: #2980b9 !important;   /* Slightly deeper blue on mouse hover */
+.maps-list li {
+  display: flex;
+  align-items: center;
 }
 
-/* Explicitly Constrain the SVG Arrow Icon */
-.projects-row .action-button svg {
-  width: 16px !important;
-  height: 16px !important;
-  min-width: 16px !important;
-  margin-right: 8px !important;
-  fill: #ffffff !important;                /* Forces arrow graphic to paint solid white */
-  display: inline-block !important;
+/* Designing the list links */
+.maps-list a {
+  color: #3498db; /* Sleek brand-matching blue text link color */
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Link hover animation */
+.maps-list a:hover {
+  color: #2980b9; /* Shifts to a deeper blue on hover */
+  transform: translateX(4px); /* Subtle right-nudging animation on mouse hover */
+}
+
+/* Text link map icon vector styling */
+.maps-list svg {
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 10px;
+  fill: currentColor; /* Inherits the link color rules automatically */
+}
+
+/* Mobile responsive padding compression */
+@media (max-width: 768px) {
+  .other-maps-section {
+    padding: 0 20px;
+    margin-top: 40px;
+  }
 }
 
 
+
+    /* Footer Container Styling - LOCKED TO BOTTOM */
+    .footer {
+      background-color: #2c3e50;      /* Matches navbar background color */
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between; /* Copyright on left, icons on right */
+      align-items: center;            /* Centers contents vertically */
+      
+      /* Fixed Position controls */
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;                  /* Keeps footer rendering over scrolling items */
+      width: 100%;
+    }
+
+    .footer-text {
+      font-size: 0.9rem;
+      color: #bdc3c7;                 /* Soft muted gray text */
+    }
+
+    .footer-socials {
+      display: flex;
+      list-style: none;
+      gap: 20px;                      /* Spacing between the footer icons */
+      align-items: center;
+    }
+
+    .footer-socials a {
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .footer-socials svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;             
+    }
+
+    .footer-socials a:hover {
+      color: #3498db;
+      transform: scale(1.1);          
+    }
+
+    /* MOBILE RESPONSIVE COMPACTING CODE */
+    @media (max-width: 768px) {
+      .project-row, .project-row:nth-child(even) {
+        flex-direction: column;       /* Stacks vertically on smaller screens */
+        gap: 24px;
+        padding: 20px;
+      }
+      .row-image-container, .row-text-container {
+        width: 100%;                  /* Lets elements expand full width */
+      }
+      .row-image-container {
+        padding-bottom: 56.25%;       /* Adjusts aspect ratio sizing on smaller windows */
+      }
+      .alternating-container {
+        padding: 0 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Sticky Top Navigation Header -->
   <header class="navbar">
-    <!-- Left Hand Side Title -->
     <div class="logo">Christina Lilligren</div>
-    <!-- Right Hand Side Navigation Bar -->
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">About Me</a></li>
@@ -277,160 +356,120 @@
     </nav>
   </header>
 
-  <!-- Main Content Section -->
+  <!-- Scrollable Main Content Container -->
   <main class="main-content">
-    <h1>Web Experiences</h1>
-    <p>Below are web experiences I have created using ArcGIS Experience Builder.</p>
-    <p>Explore the links below to see my web experiences.</p>
+    <h1>Welcome to My GIS Portfolio</h1>
+    <p class="intro-text">Hi, I am Christina. I specialize in geographic information systems, spatial data analysis, and cartographic design. This portfolio showcases my work using modern web mapping technologies, spatial data science, and my academic research.</p>
 
-    <!-- FIXED: Moved inside the scrollable main container -->
-<div class="showcase-wrapper">
-  
-  <!-- Sub-grid layout tracking rows of 3 items -->
-  <div class="projects-row">
-    
-    <!-- ITEM 1 -->
-    <div class="project-item">
-      <div class="image-container">
-        <!-- REPLACE src path with your local map screenshot image file name -->
-        <img src="images/ResidentialGarbage.png" alt="Residential Garbage Collection Website Photo">
+    <!-- MASTER CONTAINER FOR ALTERNATING DESIGN -->
+    <div class="alternating-container">
+ <!-- FIRST PROJECT: PICTURE LEFT, TEXT RIGHT -->
+      <!-- FIRST PROJECT MODULE: EMBED LEFT, TEXT RIGHT -->
+      <div class="project-row">
+        <div class="row-image-container">
+          <!-- Live Embedded Iframe (Replace with your actual ArcGIS Experience URL) -->
+          <iframe 
+            src="https://experience.arcgis.com/experience/1f259b7162ae46e9909ca98e5fc348ce" 
+            title="Residential Garbage Collection Live Web App"
+            loading="lazy"
+            allow="geolocation"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
+          </iframe>
+        </div>
+        <div class="row-text-container">
+          <h3>Residential Garbage Collection</h3>
+          <p>An interactive spatial analysis interface charting waste management layout configurations, transit schedules, and regional routing optimizations built using ArcGIS layers.</p>
+          <a href="https://experience.arcgis.com/experience/1f259b7162ae46e9909ca98e5fc348ce" target="_blank" rel="noopener noreferrer" class="action-button">
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            Launch Full Screen
+          </a>
+        </div>
       </div>
-      <h3>Residential Garbage Collection</h3>
-      <a href="https://experience.arcgis.com/experience/1f259b7162ae46e9909ca98e5fc348ce" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
 
-    <!-- ITEM 2 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/2026ChipSeal.png" alt="2026 Chip & Seal Program Website Photo">
+      <!-- SECOND PROJECT MODULE: AUTOMATICALLY FLIPS (EMBED RIGHT, TEXT LEFT) -->
+      <div class="project-row">
+        <div class="row-image-container">
+          <!-- Live Embedded Iframe (Replace with your second project URL) -->
+          <iframe 
+            src="https://experience.arcgis.com/experience/ea1bd8856e08460f84997d4e04c99837" 
+            title="Property Status Live Web App"
+            loading="lazy"
+            allow="geolocation"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
+          </iframe>
+        </div>
+        <div class="row-text-container">
+          <h3>Property Status</h3>
+          <p>A data-intensive thematic map exploring census variations, income distribution metrics, and socioeconomic indicators configured inside ArcGIS Experience Builder grids.</p>
+          <a href="https://experience.arcgis.com/experience/ea1bd8856e08460f84997d4e04c99837" target="_blank" rel="noopener noreferrer" class="action-button">
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            Launch Full Screen
+          </a>
+        </div>
       </div>
-      <h3>2026 Chip & Seal Program</h3>
-      <a href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
 
-    <!-- ITEM 3 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/FloodZoneLookup.png" alt="Flood Zone Lookup Website Photo">
-      </div>
-      <h3>Flood Zone Lookup</h3>
-      <a href="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
-    <!-- ITEM 4 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/PropertyStatus.png" alt="Property Status Website Photo">
-      </div>
-      <h3>Property Status</h3>
-      <a href="https://experience.arcgis.com/experience/ea1bd8856e08460f84997d4e04c99837" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
+    </div> <!-- Closes the alternating-container -->
+    </div> <!-- End alternating wrapper -->
 
-  </div> <!-- End rows layout tracking element -->
-</div>
+    <!-- NEW SECTION: List of other map files/links -->
+    <section class="other-maps-section">
+      <h2>Other Web Experiences</h2>
+      <ul class="maps-list">
+        
+        <!-- Map Link Item 1 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/092e45d23c1f4dc899dfd789877ec6ac" target="_blank" rel="noopener noreferrer">
+            <!-- Inline Map/Pin Icon Graphic -->
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            2026 Chip & Seal
+          </a>
+        </li>
 
-<!-- NEXT ROW -->
-    <!-- FIXED: Moved inside the scrollable main container -->
-<div class="showcase-wrapper">
-  
-  <!-- Sub-grid layout tracking rows of 3 items -->
-  <div class="projects-row">
-    
-    <!-- ITEM 1 -->
-    <div class="project-item">
-      <div class="image-container">
-        <!-- REPLACE src path with your local map screenshot image file name -->
-        <img src="images/ResidentialOccupancy.png" alt="Residential Occupancy Website Photo">
-      </div>
-      <h3>Residential Occupancy</h3>
-      <a href="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
+        <!-- Map Link Item 2 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/b84500d4a4854bbbb68599c9c9b20b9b" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            Flood Zone Lookup
+          </a>
+        </li>
 
-    <!-- ITEM 2 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/TrafficCount.png" alt="Traffic Count Lookup Website Photo">
-      </div>
-      <h3>Traffic Count Lookup</h3>
-      <a href="https://experience.arcgis.com/experience/ef9ea6bf6eae4327a6ba5ea5f3809a0a" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
+        <!-- Map Link Item 3 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/1f93123a72f54b94808c9f12e200af84" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            Residential Occupancy
+          </a>
+        </li>
 
-    <!-- ITEM 3 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/Topo.png" alt="USGS Topo Map Ordering Website Photo">
-      </div>
-      <h3>USGS Topo Map Ordering</h3>
-      <a href="https://experience.arcgis.com/experience/a6f29ce9c47c400e917f5d9b3fe47e0a" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
-    <!-- ITEM 4 -->
-    <div class="project-item">
-      <div class="image-container">
-        <img src="images/Zoning.png" alt="Zoning Website Photo">
-      </div>
-      <h3>Zoning</h3>
-      <a href="https://experience.arcgis.com/experience/66c8ab73d8ea46288cd9b559c7decfb3" target="_blank" rel="noopener noreferrer" class="action-button">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        Launch Experience
-      </a>
-    </div>
+        <!-- Map Link Item 4 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/ef9ea6bf6eae4327a6ba5ea5f3809a0a" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            Traffic Count Lookup
+          </a>
+        </li>
 
-  </div> <!-- End rows layout tracking element -->
-</div>
+        <!-- Map Link Item 5 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/a6f29ce9c47c400e917f5d9b3fe47e0a" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            USGS Topographic Map Ordering
+          </a>
+        </li>
 
+        <!-- Map Link Item 6 -->
+        <li>
+          <a href="https://experience.arcgis.com/experience/66c8ab73d8ea46288cd9b559c7decfb3" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            Zoning
+          </a>
+        </li>
 
+      </ul>
+    </section>
 
-  </main>
+  </main> <!-- Closes your main content container scroll block perfectly -->
 
-
-  <!-- Footer Section at the Bottom -->
-  <footer class="footer">
-    <div class="footer-text">
-      &copy; 2026 Christina Lilligren. All rights reserved.
-    </div>
-    
-    <!-- Clean, non-overlapping container wrapper -->
-    <div class="footer-socials">
-      <!-- Email -->
-      <a href="mailto:christinalilligren@gmail.com" title="Email Me">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-      </a>
       
-      <!-- LinkedIn -->
-      <a href="https://linkedin.com/in/christinalilligren" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
-        <svg viewBox="0 0 24 24">
-          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-        </svg>
-      </a>
-      
-      <!-- GitHub -->
-      <a href="https://github.com/clilligr" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" title="GitHub Profile">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-        </svg>
-      </a>
-    </div>
-  </footer>
-<body>
+
+
