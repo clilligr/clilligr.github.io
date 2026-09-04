@@ -263,15 +263,6 @@
   fill: currentColor; /* Inherits the link color rules automatically */
 }
 
-/* Mobile responsive padding compression */
-@media (max-width: 768px) {
-  .other-maps-section {
-    padding: 0 20px;
-    margin-top: 40px;
-  }
-}
-
-
 
     /* Footer Container Styling - LOCKED TO BOTTOM */
     .footer {
@@ -322,109 +313,78 @@
       transform: scale(1.1);          
     }
 
-    /* MOBILE RESPONSIVE COMPACTING CODE */
-    @media (max-width: 768px) {
-      .project-row, .project-row:nth-child(even) {
-        flex-direction: column;       /* Stacks vertically on smaller screens */
-        gap: 24px;
-        padding: 20px;
-      }
-      .row-image-container, .row-text-container {
-        width: 100%;                  /* Lets elements expand full width */
-      }
-      .row-image-container {
-        padding-bottom: 56.25%;       /* Adjusts aspect ratio sizing on smaller windows */
-      }
-      .alternating-container {
-        padding: 0 20px;
-      }
-    }
+       /* RESPONSIVE DESIGN - TRIGGER MOBILE DROPDOWN LINKS PANEL */ 
+  @media (max-width: 768px) { 
+    .navbar { 
+      padding: 15px 20px; 
+      position: relative; /* Keeps the absolute dropdown aligned to the navbar */
+    } 
 
-  /* Responsive Mobile Media Queries Breakpoints */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: none !important; /* Fixed: Prevents default checkbox system visibility bug */
-      }
+    .hamburger-label { 
+      display: flex; 
+    } 
 
-      .navbar {
-        padding: 15px 20px;
-      }
+    .nav-links { 
+      display: none; 
+      flex-direction: column; 
+      width: 100%; 
+      background-color: #2c3e50; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      padding: 20px; 
+      gap: 15px; 
+      border-top: 1px solid #34495e; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15); 
+      z-index: 1001; 
+    } 
 
-      .hamburger-label {
-        display: flex;
-      }
+    /* FIXED: Targets nav when it is a sibling of hamburger-label inside the navbar */
+    .menu-toggle:checked ~ nav .nav-links { 
+      display: flex; 
+    } 
 
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: var(--primary-dark);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px;
-        gap: 15px;
-        border-top: 1px solid #34495e;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-        z-index: 1001;
-      }
+    .menu-toggle:checked + .hamburger-label span:nth-child(1) { 
+      transform: rotate(45deg) translate(5px, 6px); 
+    } 
+    .menu-toggle:checked + .hamburger-label span:nth-child(2) { 
+      opacity: 0; 
+    } 
+    .menu-toggle:checked + .hamburger-label span:nth-child(3) { 
+      transform: rotate(-45deg) translate(5px, -6px); 
+    } 
+  } 
+</style> 
+</head> 
+<body> 
+  <header class="navbar"> 
+    <!-- Left Hand Side Title --> 
+    <div class="logo">Christina Lilligren</div> 
 
-      .menu-toggle:checked ~ nav .nav-links {
-        display: flex;
-      }
+    <!-- Pure CSS Toggle Checkbox --> 
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" style="display: none !important;"> 
 
-      .menu-toggle:checked + .hamburger-label span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
+    <!-- Three line hamburger button icon graphic --> 
+    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu"> 
+      <span></span> 
+      <span></span> 
+      <span></span> 
+    </label> 
 
-      .project-row, .project-row:nth-child(even) {
-        flex-direction: column;
-        gap: 24px;
-        padding: 20px;
-      }
+    <!-- Right Hand Side Navigation Bar links container --> 
+    <nav> 
+      <ul class="nav-links"> 
+        <li><a href="index.html">About Me</a></li> 
+        <li><a href="experiencebuilder.html">Web Experiences</a></li> 
+        <li><a href="maps.html">Other Projects</a></li> 
+        <li><a href="thesis.html">Thesis</a></li> 
+      </ul> 
+    </nav> 
+  </header>
 
-      .row-image-container, .row-text-container {
-        width: 100%;
-      }
-
-      .row-image-container {
-        padding-bottom: 56.25%; /* Restores mobile 16:9 canvas scaling */
-      }
-
-      .alternating-container, .other-maps-section {
-        padding: 0 20px;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Top Sticky Navigation Bar -->
-  <header class="navbar">
-    <div class="logo">Christina Lilligren</div>
-    
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">About Me</a></li>
-        <li><a href="experiencebuilder.html">Web Experiences</a></li>
-        <li><a href="maps.html">Other Projects</a></li>
-        <li><a href="thesis.html">Thesis</a></li>
-      </ul>
-    </nav>
-  </header>
 
   <!-- Scrollable Main Content Container -->
   <main class="main-content">
