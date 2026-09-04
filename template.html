@@ -1,406 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GIS Portfolio - Template Base</title>
-  <style>
-    /* --- Base Variables & Core Layout Reset --- */
-    :root {
-      --primary-dark: #2c3e50;
-      --primary-accent: #3498db;
-      --primary-hover: #2980b9;
-      --card-bg: #ffffff;
-      --border-color: #e2e8f0;
-      --text-dark: #333333;
-      --text-muted: #64748b;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Portfolio | Christina Lilligren</title>
+    <style>
+        /* ==========================================================================
+           1. RESET & BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        html, body {
+            height: 100%;
+        }
 
-    html, body {
-      height: 100%;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: var(--text-dark);
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-    }
+        /* ==========================================================================
+           2. NAVIGATION HEADER
+           ========================================================================== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #000000;
+            color: white;
+            position: relative;
+        }
 
-    /* --- Navigation Header Container (STICKY WINDOW TOP) --- */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: var(--primary-dark);
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
+        .nav-links a:hover {
+            color: #3498db;
+        }
 
-    .nav-links a:hover {
-      color: var(--primary-accent);
-    }
+        /* Mobile Menu Triggers (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+        }
 
-    /* --- Invisible Mobile Toggle Selectors (Desktop Mode) --- */
-    .menu-toggle {
-      display: none !important; /* Forces physical box out of desktop viewport flow */
-    }
+        .hamburger-label {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
 
-    .hamburger-label {
-      display: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-    }
+        .hamburger-label span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-    .hamburger-label span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
+        /* ==========================================================================
+           3. MAIN CONTENT
+           ========================================================================== */
+        .main-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+            flex: 1; /* Pushes footer down on short pages */
+        }
 
-    /* --- Main Body Framework Structural Wrapper --- */
-    .main-content {
-      width: 100%;
-      margin: 30px 0;
-      flex: 1; /* Pushes the footer down when page text blocks are small */
-      overflow-x: hidden;
-    }
+        .main-content h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 20px;
+        }
 
-    /* Full bleed title banner background decoration rule */
-    .main-content h1 {
-      font-size: 2.3rem;
-      color: var(--primary-dark);
-      background-color: #ffffff;
-      text-align: center;
-      width: 100%;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 30px;
-      padding: 15px 20px;
-    }
+        .main-content p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
 
-    .main-content p.intro-text {
-      max-width: 1100px;
-      margin: 0 auto 30px auto;
-      font-size: 1.1rem;
-      padding: 0 40px;
-    }
+        /* ==========================================================================
+           4. FOOTER
+           ========================================================================== */
+        .footer {
+            background-color: #000000;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* --- Master Layout Columns Grid System --- */
-    .alternating-container {
-      max-width: 2000px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-    }
+        .footer-text {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
 
-    .project-row {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .footer-socials {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
 
-    .project-row:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
+        .footer-socials a {
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
 
-    .project-row:nth-child(even) {
-      flex-direction: row-reverse; /* Reverses horizontal order automatically */
-    }
+        .footer-socials svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
 
-    .row-image-container {
-      flex: 3;
-      position: relative;
-      padding-bottom: 42%; /* Responsive 16:9 canvas scaling math rule */
-      height: 0;
-      overflow: hidden;
-      background: #f1f5f9;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-    }
+        .footer-socials a:hover {
+            color: #3498db;
+            transform: scale(1.1);
+        }
 
-    .row-text-container {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      word-wrap: break-word;
-      overflow: hidden;
-    }
+        /* ==========================================================================
+           5. RESPONSIVE DESIGN (MOBILE VIEW)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
 
-    .row-text-container h3 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      margin-bottom: 12px;
-    }
+            .hamburger-label {
+                display: flex;
+            }
 
-    .row-text-container p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 24px;
-    }
+            /* Transforms desktop links into a mobile dropdown panel */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                gap: 15px;
+                border-top: 1px solid #34495e;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+                z-index: 1001;
+            }
 
-    /* Interactive button layout rules */
-    .alternating-container .action-button {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background-color: var(--primary-accent) !important;
-      color: #ffffff !important;
-      text-decoration: none !important;
-      padding: 12px 24px !important;
-      border-radius: 8px !important;
-      font-weight: 500 !important;
-      font-size: 0.95rem !important;
-      transition: background-color 0.2s ease, transform 0.1s ease !important;
-    }
+            /* CSS Hack: Displays the dropdown menu when the hidden checkbox is clicked */
+            .menu-toggle:checked ~ .nav-links {
+                display: flex;
+            }
 
-    .alternating-container .action-button:hover {
-      background-color: var(--primary-hover) !important;
-    }
+            /* Animates hamburger icon lines into an 'X' */
+            .menu-toggle:checked + .hamburger-label span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
 
-    .alternating-container .action-button svg {
-      width: 16px !important;
-      height: 16px !important;
-      min-width: 16px !important;
-      margin-right: 8px !important;
-      fill: #ffffff !important;
-      display: inline-block !important;
-    }
+            .menu-toggle:checked + .hamburger-label span:nth-child(2) {
+                opacity: 0;
+            }
 
-    /* --- Secondary Lists & Bottom Navigation Elements --- */
-    .other-maps-section {
-      max-width: 1100px;
-      margin: 50px auto 20px auto;
-      padding: 0 40px;
-    }
-
-    .other-maps-section h2 {
-      font-size: 1.8rem;
-      color: var(--primary-dark);
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--border-color);
-    }
-
-    .maps-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .maps-list li {
-      display: flex;
-      align-items: center;
-    }
-
-    .maps-list a {
-      color: var(--primary-accent);
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .maps-list a:hover {
-      color: var(--primary-hover);
-      transform: translateX(4px);
-    }
-
-    .maps-list svg {
-      width: 18px !important;
-      height: 18px !important;
-      margin-right: 10px;
-      fill: currentColor;
-    }
-
-    /* --- Footer Bar Wrapper (STICKY SCREEN BOTTOM) --- */
-    .footer {
-      background-color: var(--primary-dark);
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto; /* Fallback baseline tracker lock */
-      width: 100%;
-    }
-
-    .footer-text {
-      font-size: 0.9rem;
-      color: #bdc3c7;
-    }
-
-    .footer-socials {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .footer-socials a {
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .footer-socials svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    .footer-socials a:hover {
-      color: var(--primary-accent);
-      transform: scale(1.1);
-    }
-
-    /* --- RESPONSIVE DESIGN - TRIGGER MOBILE DROPDOWN LINKS PANEL --- */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 15px 20px;
-      }
-
-      .hamburger-label {
-        display: flex; /* Activates the hamburger lines vector */
-      }
-
-      .nav-links {
-        display: none; /* Collapses menu tray out of initial render view */
-        flex-direction: column;
-        width: 100%;
-        background-color: var(--primary-dark);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px;
-        gap: 15px;
-        border-top: 1px solid #34495e;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-        z-index: 1001;
-      }
-
-      /* Checkbox layout hack mapping */
-      .menu-toggle:checked ~ nav .nav-links {
-        display: flex;
-      }
-
-      /* Animated vector transformation states */
-      .menu-toggle:checked + .hamburger-label span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
-
-      /* Mobile row configuration adjustments */
-      .project-row, .project-row:nth-child(even) {
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-      }
-
-      .row-image-container {
-        display: none !important; /* Hides live maps/iframes on phones */
-      }
-
-      .row-text-container {
-        width: 100%; /* Expands the project content blocks full width */
-      }
-
-      .alternating-container, .other-maps-section {
-        padding: 0 20px;
-      }
-    }
-  </style>
+            .menu-toggle:checked + .hamburger-label span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Navigation Bar Header Element -->
-  <header class="navbar">
-    <div class="logo">Christina Lilligren</div>
-    
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    
-    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">[Your Logo]</a>
+        
+        <!-- Mobile Dropdown System Mechanics -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">About Me</a></li>
-        <li><a href="experiencebuilder.html">Web Experiences</a></li>
-        <li><a href="maps.html">Other Projects</a></li>
-        <li><a href="thesis.html">Thesis</a></li>
-        <li><a href="template.html">Template</a></li>
-      </ul>
-    </nav>
-  </header>
+        <!-- Navigation Menu Links -->
+        <nav class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </nav>
+    </header>
 
-  <!-- Main Application Body Workspace Section -->
-  <main class="main-content">
-    
-    <!-- 1. PAGE HEADING BANNER ROW -->
-    <h1>Page Title Line</h1>
-    
-    <!-- 2. DESCRIPTIVE INTRODUCTORY PARAGRAPH BLOCK -->
-    <p class="intro-text">
-      Enter your page description background story details right here.
-    </p>
+    <!-- Main Dynamic Content Wrapper -->
+    <main class="main-content">
+        <h1>[Main Page Heading]</h1>
+        <p>This is a placeholder paragraph. Swap this block of text out on individual pages to fit your layout requirements.</p>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="footer">
+        <p class="footer-text">&copy; 2026 [Your Name]. All rights reserved.</p>
+        
+        <!-- Social Profiles / External Networks Area -->
+        <ul class="footer-socials">
+            <li>
+                <a href="[Your_Link]" target="_blank" aria-label="Social Link 1">
+                    <!-- Placeholder Box SVG Graphic -->
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </a>
+            </li>
+            <li>
+                <a href="[Your_Link]" target="_blank" aria-label="Social Link 2">
+                    <!-- Placeholder Box SVG Graphic -->
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+</body>
+</html>
 
