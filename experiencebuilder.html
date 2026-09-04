@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+YPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -314,50 +314,34 @@
     }
 
     /* --- RESPONSIVE DESIGN - MOBILE DROPDOWN & LAYOUT --- */
-    /* RESPONSIVE DESIGN - TRIGGER MOBILE DROPDOWN LINKS PANEL */
+
+
+
     @media (max-width: 768px) {
-      .navbar {
-        padding: 15px 20px;           /* Snugs the navbar slightly closer to screen edges */
+      .navbar { 
+        padding: 15px 20px; 
       }
-
-      /* Displays the hamburger vector lines */
-      .hamburger-label {
-        display: flex;
+      .hamburger-label { 
+        display: flex; 
       }
-
-      /* Re-formats the navbar list links box array into a stacked drop-down tray */
-      .nav-links {
-        display: none;                /* HIDDEN BY DEFAULT on mobile view screens */
+      .nav-links { 
+        display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #2c3e50;
+        background-color: var(--primary-dark);
         position: absolute;
-        top: 100%;                    /* Drops the drawer right below the header line wall */
+        top: 100%;
         left: 0;
         padding: 20px;
         gap: 15px;
-        border-top: 1px solid #34495e;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
         z-index: 1001;
       }
-
-      /* THE CSS DROPDOWN MAGIC: If the toggle box is checked, target nav-links and display them */
-      .menu-toggle:checked ~ nav .nav-links {
-        display: flex;
-      }
-
-      /* Optional Polish: Animate hamburger icon into an 'X' when menu dropdown drawer opens */
-      .menu-toggle:checked + .hamburger-label span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle:checked + .hamburger-label span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
-    }
-
+      .menu-toggle:checked ~ nav .nav-links { display: flex; }
+      .menu-toggle:checked + .hamburger-label span:nth-child(1) { transform: rotate(45deg) translate(4px, 6px); }
+      .menu-toggle:checked + .hamburger-label span:nth-child(2) { opacity: 0; }
+      .menu-toggle:checked + .hamburger-label span:nth-child(3) { transform: rotate(-45deg) translate(4px, -6px); }
 
       /* ========================================== */
       /*  ADD THESE NEW PROJECT ROW RULES BELOW   */
@@ -383,31 +367,30 @@
 </style> 
 </head> 
 <body> 
-  <header class="navbar">
-    <!-- Left Hand Side Title -->
-    <div class="logo">Christina Lilligren</div>
-    
-    <!-- Pure CSS Toggle Checkbox (Kept invisible to layout engines) -->
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    
-    <!-- Three line hamburger button icon graphic -->
-    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
+  <header class="navbar"> 
+    <!-- Left Hand Side Title --> 
+    <div class="logo">Christina Lilligren</div> 
 
-    <!-- Right Hand Side Navigation Bar links container -->
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">About Me</a></li>
-        <li><a href="experiencebuilder.html">Web Experiences</a></li>
-        <li><a href="maps.html">Other Projects</a></li>
-        <li><a href="thesis.html">Thesis</a></li>
-      </ul>
-    </nav>
+    <!-- Pure CSS Toggle Checkbox --> 
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" style="display: none !important;"> 
+
+    <!-- Three line hamburger button icon graphic --> 
+    <label for="menu-toggle" class="hamburger-label" aria-label="Toggle navigation menu"> 
+      <span></span> 
+      <span></span> 
+      <span></span> 
+    </label> 
+
+    <!-- Right Hand Side Navigation Bar links container --> 
+    <nav> 
+      <ul class="nav-links"> 
+        <li><a href="index.html">About Me</a></li> 
+        <li><a href="experiencebuilder.html">Web Experiences</a></li> 
+        <li><a href="maps.html">Other Projects</a></li> 
+        <li><a href="thesis.html">Thesis</a></li> 
+      </ul> 
+    </nav> 
   </header>
-
 
 </head>
 <body>
@@ -528,5 +511,3 @@
   </main> <!-- Closes your main content container scroll block perfectly -->
 
       
-
-
